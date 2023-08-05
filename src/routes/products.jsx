@@ -29,8 +29,9 @@ const Products = () => {
   return (
     <div className='wrapper'>
       <div className='title'>
-        <h2>Menu</h2>
         <div className='menu-list-container'>
+          <h2>Menu</h2>
+
           <div className='menu-list'>
             {product.map((item, key) => {
               return (
@@ -54,8 +55,31 @@ const Products = () => {
             {data[selectedDish].map((dish) => (
               <div className='pizza-img-container' key={dish.id}>
                 {console.log(dish)}
-                <img className='pizza-img' src={dish.image} alt='' />
-                <h3 className='dish-name'>{dish.name}</h3>
+                <div className='dish-content'>
+                  <img className='pizza-img' src={dish.image} alt='' />
+                  <h3 className='dish-name'>{dish.name}</h3>
+                  <p>{dish.description}</p>
+                  <p>
+                    Spicy :{' '}
+                    {dish.spicy ? (
+                      <span className='red-clr'>yes</span>
+                    ) : (
+                      <span className='green-clr'>No</span>
+                    )}
+                  </p>
+                  <p>
+                    Vegetarian :{' '}
+                    {dish.vegetarian ? (
+                      <span className='green-clr'>yes</span>
+                    ) : (
+                      <span className='red-clr'>No</span>
+                    )}
+                  </p>
+                  <p>Price:{dish.price}$</p>
+                  <button className='cart-btn'>
+                    <span>Click to get </span>
+                  </button>
+                </div>
               </div>
             ))}
           </div>
