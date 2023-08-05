@@ -1,0 +1,32 @@
+.menu-list {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.item-container {
+  border: 1px solid rgb(183, 174, 174);
+  border-radius: 10px;
+  padding: 0.5rem 1rem;
+}
+.item-container.active {
+  color: rgb(83, 0, 128);
+  background-color: rgb(47, 156, 202);
+}
+.pizza-img {
+  height: 200px;
+  width: 200px;
+}
+
+.pizza {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 2rem;
+}
+.pizza-img-container {
+  height: auto;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 10px;
+}
