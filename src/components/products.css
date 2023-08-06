@@ -4,6 +4,7 @@
   gap: 1rem;
   justify-content: space-evenly;
   margin: 2rem;
+  cursor: pointer;
 }
 .menu-list-container {
   display: flex;
@@ -23,6 +24,9 @@
 .pizza-img {
   height: 180px;
   width: 180px;
+}
+.home-img {
+  width: 100%;
 }
 
 .pizza {

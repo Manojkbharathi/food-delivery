@@ -31,7 +31,11 @@ const Products = () => {
       <div className='title'>
         <div className='menu-list-container'>
           <h2>Menu</h2>
-
+          <img
+            className='home-img'
+            src='https://api.pizzahut.io/v1/content/en-in/in-1/images/deal/hut-meal-for-4.0e5ac94da0985f5689876da467fb694a.1.jpg'
+            alt=''
+          />
           <div className='menu-list'>
             {product.map((item, key) => {
               return (
