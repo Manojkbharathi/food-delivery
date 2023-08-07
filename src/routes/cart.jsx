@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useContext, useEffect } from 'react';
 import { ContextApp } from '../context/context';
 import '../components/cart.css';
 const Cart = () => {
   const { cartItem, addToCart, setCartItem } = useContext(ContextApp);
-  useEffect(() => {});
+  const [totalAmount, setTotalAmount] = useState(0);
+
+  useEffect(() => {
+    let total = 0;
+    cartItem.forEach((item) => {
+      total += Number(item.price * item.count);
+    });
+    setTotalAmount(total);
+  }, [cartItem]);
   const removeItem = (id) => {
     const remove = cartItem.map((item) => {
       if (item.id === id && item.count > 1) {
@@ -21,7 +29,7 @@ const Cart = () => {
     setCartItem(filteredItem);
   };
   return (
-    <div>
+    <div className='cart-section'>
       {cartItem.length === 0 ? (
         <h2>Your cart is empty</h2>
       ) : (
@@ -31,12 +39,13 @@ const Cart = () => {
               <div className='cart'>
                 <img className='cart-img' src={item.image} alt='' />
                 <div className='details'>
-                  <p>{item.name}</p>
+                  <h3>{item.name}</h3>
                   <div className='count-section'>
                     <button onClick={() => addToCart(item)}>+</button>
                     <p>{item.count}</p>
                     <button onClick={() => removeItem(item.id)}>-</button>
                   </div>
+                  <h3>${item.price}</h3>
                 </div>
               </div>
             </div>
@@ -44,7 +53,7 @@ const Cart = () => {
         </div>
       )}
 
-      <h2 className='price'>Total price :{0}</h2>
+      <h2 className='price'>Total price :${totalAmount}</h2>
     </div>
   );
 };

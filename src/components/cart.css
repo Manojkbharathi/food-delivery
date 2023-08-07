@@ -1,7 +1,7 @@
 .cart {
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  gap: 60%;
 }
 
 .cart-img {
@@ -14,5 +14,8 @@
 }
 .price {
   position: relative;
-  right: -68%;
+  left: 59%;
+}
+.cart-section {
+  overflow-x: hidden;
 }

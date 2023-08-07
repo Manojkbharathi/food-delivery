@@ -3,7 +3,7 @@ import {
   AiOutlineFacebook,
   AiOutlineTwitter,
 } from 'react-icons/ai';
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import '../components/footer.css';
 import data from '../components/data.json';
 import '../components/data.json';
@@ -11,7 +11,7 @@ import '../components/products.css';
 import { ContextApp } from '../context/context';
 
 const Products = () => {
-  const { addToCart, cartItem } = useContext(ContextApp);
+  const { addToCart } = useContext(ContextApp);
 
   const [selected, setSelected] = useState(0);
   const [selectedDish, setSelectedDish] = useState('pizza');
@@ -27,7 +27,7 @@ const Products = () => {
     const key = event.target.name;
     setUsers({ ...users, [key]: value });
   }
-  console.log(cartItem);
+
   return (
     <div className='wrapper'>
       <div className='title'>
