@@ -3,16 +3,18 @@ import {
   AiOutlineFacebook,
   AiOutlineTwitter,
 } from 'react-icons/ai';
-import React, { useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import '../components/footer.css';
 import data from '../components/data.json';
 import '../components/data.json';
 import '../components/products.css';
+import { ContextApp } from '../context/context';
 
 const Products = () => {
+  const { addToCart, cartItem } = useContext(ContextApp);
+
   const [selected, setSelected] = useState(0);
   const [selectedDish, setSelectedDish] = useState('pizza');
-  console.log(data[selectedDish]);
   const handleClick = (item, key) => {
     setSelected(key);
     setSelectedDish(item);
@@ -25,7 +27,7 @@ const Products = () => {
     const key = event.target.name;
     setUsers({ ...users, [key]: value });
   }
-
+  console.log(cartItem);
   return (
     <div className='wrapper'>
       <div className='title'>
@@ -59,7 +61,6 @@ const Products = () => {
           <div className='pizza'>
             {data[selectedDish].map((dish) => (
               <div className='pizza-img-container' key={dish.id}>
-                {console.log(dish)}
                 <div className='dish-content'>
                   <img className='pizza-img' src={dish.image} alt='' />
                   <h3 className='dish-name'>{dish.name}</h3>
@@ -81,7 +82,7 @@ const Products = () => {
                     )}
                   </p>
                   <p>Price:{dish.price}$</p>
-                  <button className='cart-btn'>
+                  <button className='cart-btn' onClick={() => addToCart(dish)}>
                     <span>Click to get </span>
                   </button>
                 </div>
