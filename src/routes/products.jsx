@@ -11,6 +11,10 @@ import '../components/products.css';
 import { ContextApp } from '../context/context';
 
 const Products = () => {
+  const logout = () => {
+    localStorage.clear();
+    window.location.reload();
+  };
   const { addToCart } = useContext(ContextApp);
 
   const [selected, setSelected] = useState(0);
@@ -30,6 +34,8 @@ const Products = () => {
 
   return (
     <div className='wrapper'>
+      <button onClick={logout}>Log out</button>
+
       <div className='title'>
         <div className='menu-list-container'>
           <img

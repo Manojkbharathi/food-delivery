@@ -8,6 +8,7 @@ import { useContext } from 'react';
 const Navbar = () => {
   const { cartItem } = useContext(ContextApp);
   const cartCount = cartItem.length; // Get the count of items in the cart
+
   return (
     <div className='navbar'>
       <Link className='nav-link' to='/'>
@@ -17,8 +18,8 @@ const Navbar = () => {
       <Link className='nav-link' to='signUp'>
         Sign Up
       </Link>
-      <Link className='nav-link' to='logIn'>
-        Log In
+      <Link className='nav-link' to='signIn'>
+        Sign In
       </Link>
       <Link className='nav-link' to='cart'>
         <span className='count'>{cartCount}</span>
