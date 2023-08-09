@@ -3,18 +3,32 @@ import {
   AiOutlineFacebook,
   AiOutlineTwitter,
 } from 'react-icons/ai';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import '../components/footer.css';
 import data from '../components/data.json';
 import '../components/data.json';
 import '../components/products.css';
 import { ContextApp } from '../context/context';
-
+import { auth } from '../utils/firebase';
+import { onAuthStateChanged } from 'firebase/auth';
 const Products = () => {
   const logout = () => {
     localStorage.clear();
     window.location.reload();
   };
+
+  const [id, setId] = useState('');
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        setId(uid);
+      } else {
+        alert('Please login first');
+      }
+    });
+  }, []);
   const { addToCart } = useContext(ContextApp);
 
   const [selected, setSelected] = useState(0);
