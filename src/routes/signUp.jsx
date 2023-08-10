@@ -1,7 +1,7 @@
 import { auth, provider } from '../utils/firebase';
 import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { useState, useEffect } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 import '../../src/index.css';
 import Home from './products';
 const SignUp = () => {
@@ -15,6 +15,7 @@ const SignUp = () => {
       .then((data) => {
         setValue(data.user.email);
         localStorage.setItem('email', data.user.email);
+        navigate('/products');
       })
       .catch((error) => {
         console.error('Google Sign-In Error:', error);
@@ -39,8 +40,13 @@ const SignUp = () => {
       });
   };
   return (
-    <div>
-      <div>
+    <div className='sign-up-container'>
+      <div className='heading'>
+        <h1>Hungry ?</h1>
+        <p>Order pizza from favorite Domino's</p>
+      </div>
+      <div className='sign-up'>
+        <h2>Sign up</h2>
         <form onSubmit={handleLogin}>
           <input
             type='email'
@@ -53,16 +59,20 @@ const SignUp = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          <button type='submit'>Log In</button>
+          <button type='submit' className='button'>
+            signUp
+          </button>
           {error && <span>Wrong email or password</span>}
         </form>
       </div>
-      <div className='google-auth'>
-        {value ? (
-          <Home />
-        ) : (
-          <button onClick={handleCLick}>SIgnIn with Google</button>
-        )}
+      <div className='btn-container'>
+        <button className='btn' onClick={handleCLick}>
+          SignIn with Google
+        </button>
+
+        <button className='btn' onClick={() => navigate('/signIn')}>
+          Already have Account Log in
+        </button>
       </div>
     </div>
   );

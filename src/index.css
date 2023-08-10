@@ -8,9 +8,11 @@
 }
 body {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  height: 100vh;
+  height: 100%;
   width: 100vw;
-  overflow-x: visible;
+  background-image: url(./assets/italian-crust-logo.png);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 form {
@@ -20,4 +22,67 @@ form {
   justify-content: center;
   gap: 4rem;
   margin-top: 8rem;
+}
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 3rem;
+  margin: 2rem;
+}
+.btn {
+  display: block;
+  font-size: 14px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #333;
+  border-radius: 10px;
+  border-top: 4px solid #d90c0c;
+  border-bottom: 4px solid #07a0cf;
+  padding: 10px;
+  letter-spacing: 2px;
+  transition: all 0.25s;
+}
+.btn:hover {
+  letter-spacing: 5px;
+
+  left: 0;
+  color: rgb(86, 2, 253);
+  transition: all 0.35s;
+}
+.button {
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+}
+
+.button:hover {
+  border: 3px solid #2ecc71;
+  background: transparent;
+  color: #2ecc71;
+}
+.heading {
+  margin: 1rem;
+}
+.sign-up {
+  text-align: center;
+  margin: 2rem;
+}
+.sign-up-container {
+  background-image: url(./assets/logo.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+.sing-in {
+  display: flex;
+  text-align: center;
+  margin-top: 2rem;
+  gap: 8rem;
+}
+.sign-in-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: ;
 }

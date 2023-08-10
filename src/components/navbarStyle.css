@@ -22,3 +22,14 @@
   top: -30px;
   right: -30px;
 }
+.logo {
+  width: 10%;
+  position: relative;
+  left: -58%;
+}
+.log-btn {
+  border: none;
+  font-size: 2rem;
+  color: red;
+  background-color: transparent;
+}

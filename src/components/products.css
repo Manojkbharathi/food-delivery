@@ -27,7 +27,7 @@
 }
 .home-img {
   width: 100%;
-  height: 35vh;
+  height: 45vh;
 }
 
 .pizza {
@@ -97,4 +97,14 @@
 .cart-btn:hover span:after {
   opacity: 1;
   right: 0;
+}
+.slogan {
+  margin: 2rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: italic;
+}
+.clr {
+  color: #098e97;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-style: italic;
 }

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useContext, useEffect } from 'react';
 import { ContextApp } from '../context/context';
 import '../components/cart.css';
+import Navbar from '../components/navbar';
 const Cart = () => {
   const { cartItem, addToCart, setCartItem } = useContext(ContextApp);
   const [totalAmount, setTotalAmount] = useState(0);
@@ -30,6 +31,7 @@ const Cart = () => {
   };
   return (
     <div className='cart-section'>
+      <Navbar />
       {cartItem.length === 0 ? (
         <h2>Your cart is empty</h2>
       ) : (
@@ -41,9 +43,16 @@ const Cart = () => {
                 <div className='details'>
                   <h3>{item.name}</h3>
                   <div className='count-section'>
-                    <button onClick={() => addToCart(item)}>+</button>
-                    <p>{item.count}</p>
-                    <button onClick={() => removeItem(item.id)}>-</button>
+                    <button className='change' onClick={() => addToCart(item)}>
+                      +
+                    </button>
+                    <p className='count-cart'>{item.count}</p>
+                    <button
+                      className='change-'
+                      onClick={() => removeItem(item.id)}
+                    >
+                      -
+                    </button>
                   </div>
                   <h3>${item.price}</h3>
                 </div>

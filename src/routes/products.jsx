@@ -10,12 +10,12 @@ import '../components/data.json';
 import '../components/products.css';
 import { ContextApp } from '../context/context';
 import { auth } from '../utils/firebase';
-import { onAuthStateChanged } from 'firebase/auth';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { useNavigate } from 'react-router';
+import Navbar from '../components/navbar';
+
 const Products = () => {
-  const logout = () => {
-    localStorage.clear();
-    window.location.reload();
-  };
+  const navigate = useNavigate();
 
   const [id, setId] = useState('');
 
@@ -25,7 +25,7 @@ const Products = () => {
         const uid = user.uid;
         setId(uid);
       } else {
-        alert('Please login first');
+        navigate('/signIn');
       }
     });
   }, []);
@@ -48,10 +48,13 @@ const Products = () => {
 
   return (
     <div className='wrapper'>
-      <button onClick={logout}>Log out</button>
+      <Navbar />
 
       <div className='title'>
         <div className='menu-list-container'>
+          <h2 className='slogan'>
+            "Savor the Flavor, Order at <span className='clr'>Your Door.</span>"
+          </h2>
           <img
             className='home-img'
             src='https://api.pizzahut.io/v1/content/en-in/in-1/images/deal/hut-meal-for-4.0e5ac94da0985f5689876da467fb694a.1.jpg'

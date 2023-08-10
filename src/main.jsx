@@ -16,6 +16,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
+        element: <SignUp />,
+      },
+      {
+        path: 'products',
         element: <Products />,
       },
       {
@@ -25,10 +29,6 @@ const router = createBrowserRouter([
       {
         path: 'signIn',
         element: <SignIn />,
-      },
-      {
-        path: 'signUp',
-        element: <SignUp />,
       },
     ],
   },

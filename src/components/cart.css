@@ -1,7 +1,9 @@
 .cart {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 60%;
+  border: 3px solid rgb(237, 225, 225);
 }
 
 .cart-img {
@@ -14,8 +16,23 @@
 }
 .price {
   position: relative;
-  left: 59%;
+  left: 64%;
+  padding: 5rem;
 }
 .cart-section {
   overflow-x: hidden;
+}
+.change {
+  border: none;
+  font-size: 2rem;
+  background-color: transparent;
+}
+.change- {
+  border: none;
+  font-size: 2rem;
+  background-color: transparent;
+}
+.count-cart {
+  margin: 1rem;
+  font-size: 1.5rem;
 }
