@@ -8,8 +8,11 @@ import logo from '../assets/logo.png';
 import { signOut } from 'firebase/auth';
 import { auth } from '../utils/firebase';
 import { FiLogOut } from 'react-icons/fi';
-const Navbar = () => {
+const Navbar = ({ updateSearchQuery }) => {
   const { cartItem } = useContext(ContextApp);
+  const handleSearch = (event) => {
+    updateSearchQuery(event.target.value);
+  };
   const cartCount = cartItem.length; // Get the count of items in the cart
   const logout = async () => {
     signOut(auth)
@@ -24,6 +27,7 @@ const Navbar = () => {
   return (
     <div className='navbar'>
       <img className='logo' src={logo} alt='' />
+      <input type='text' placeholder='Search...' onChange={handleSearch} />
       <Link className='nav-link' to='/products'>
         Home
       </Link>
