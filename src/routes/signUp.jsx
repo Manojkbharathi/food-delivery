@@ -3,7 +3,6 @@ import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import '../../src/index.css';
-import Home from './products';
 const SignUp = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(false);

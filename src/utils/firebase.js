@@ -2,10 +2,7 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, GoogleAuthProvider } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
+import { collection, addDoc, Timestamp } from 'firebase/firestore';
 const firebaseConfig = {
   apiKey: 'AIzaSyDf9940K2ULkRqBOAIaC_4ONOmFOhinlSw',
   authDomain: 'food-delivery-f1cee.firebaseapp.com',
@@ -18,7 +15,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const provider = new GoogleAuthProvider();
-// export const database = getFirestore(app);
+export const db = getFirestore(app);
 export { provider };
 export const auth = getAuth(app);
 export default app;
