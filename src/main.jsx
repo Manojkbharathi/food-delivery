@@ -4,7 +4,13 @@ import App from './App.jsx';
 import './index.css';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import '../src/routes/index.js';
-import { ErrorPage, SignIn, Products, SignUp } from '../src/routes/index.js';
+import {
+  ErrorPage,
+  SignIn,
+  Products,
+  SignUp,
+  Faq,
+} from '../src/routes/index.js';
 import Root from './routes/root.jsx';
 import Cart from './routes/cart.jsx';
 import Context from './context/context.jsx';
@@ -29,6 +35,10 @@ const router = createBrowserRouter([
       {
         path: 'signIn',
         element: <SignIn />,
+      },
+      {
+        path: 'faq',
+        element: <Faq />,
       },
     ],
   },

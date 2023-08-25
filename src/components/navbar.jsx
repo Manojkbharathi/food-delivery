@@ -8,12 +8,20 @@ import logo from '../assets/logo.png';
 import { signOut } from 'firebase/auth';
 import { auth } from '../utils/firebase';
 import { FiLogOut } from 'react-icons/fi';
+import { useRef } from 'react';
 const Navbar = ({ updateSearchQuery }) => {
   const { cartItem } = useContext(ContextApp);
   const handleSearch = (event) => {
     updateSearchQuery(event.target.value);
   };
   const cartCount = cartItem.length; // Get the count of items in the cart
+  const scrollToContact = () => {
+    // Scroll to the contact section using JavaScript
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   const logout = async () => {
     signOut(auth)
       .then(() => {
@@ -23,6 +31,7 @@ const Navbar = ({ updateSearchQuery }) => {
         window.location.reload();
       })
       .catch((err) => console.log('error'));
+    const contactRef = useRef(null);
   };
   return (
     <div className='navbar'>
@@ -39,6 +48,9 @@ const Navbar = ({ updateSearchQuery }) => {
       <button className='log-btn' onClick={logout}>
         <FiLogOut />
       </button>
+      <a className='nav-link' href='#' onClick={scrollToContact}>
+        Contact
+      </a>
     </div>
   );
 };

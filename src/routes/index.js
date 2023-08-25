@@ -3,4 +3,5 @@ import Products from './products';
 import Cart from './cart';
 import SignIn from './signIn';
 import SignUp from './signUp';
-export { ErrorPage, Products, Cart, SignIn, SignUp };
+import Faq from './faq';
+export { ErrorPage, Products, Cart, SignIn, SignUp, Faq };
