@@ -12,6 +12,12 @@ import { useNavigate } from 'react-router';
 import Navbar from '../components/navbar';
 import '../components/products.css';
 import '../components/footer.css';
+import Slider from 'react-slick';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { advertiseItem } from '../components/data';
+import logo from '../assets/logo.png';
+
 const Products = () => {
   const navigate = useNavigate();
   const { addToCart } = useContext(ContextApp);
@@ -56,21 +62,41 @@ const Products = () => {
     );
     setFilteredProduct(filteredProducts);
   }, [searchQuery]);
-
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
+    pauseOnHover: true,
+  };
   return (
     <div className='wrapper'>
       <Navbar updateSearchQuery={setSearchQuery} />
-
+      <div>
+        {' '}
+        <Slider {...settings}>
+          {advertiseItem.map(({ id, img }) => {
+            return (
+              <div key={id}>
+                <ul>
+                  <li>
+                    <img src={img} alt='' className='ad-img' />
+                  </li>
+                </ul>
+              </div>
+            );
+          })}
+        </Slider>
+      </div>
       <div className='title'>
         <div className='menu-list-container'>
           <h2 className='slogan'>
             "Savor the Flavor, Order at <span className='clr'>Your Door.</span>"
           </h2>
-          <img
-            className='home-img'
-            src='https://api.pizzahut.io/v1/content/en-in/in-1/images/deal/hut-meal-for-4.0e5ac94da0985f5689876da467fb694a.1.jpg'
-            alt=''
-          />
+
           <h2>Menu</h2>
 
           <div className='menu-list'>
@@ -133,6 +159,10 @@ const Products = () => {
       </div>
 
       <footer className='footer'>
+        <img className='logo' src={logo} alt='' />
+        <h2 className='sayings'>
+          A slice of pizza a day keeps depression away.
+        </h2>
         <form
           className='form'
           action='https://formsubmit.co/manojbharathi00@gmail.com'
