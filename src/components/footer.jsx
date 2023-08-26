@@ -9,6 +9,7 @@ import { Link } from 'react-router-dom';
 import { MdFastfood, MdAttachEmail } from 'react-icons/md';
 import { ImLocation2, ImPhone } from 'react-icons/im';
 import { BsFillClockFill } from 'react-icons/bs';
+import '../components/footer.css';
 const Footer = () => {
   const [users, setUsers] = useState({ name: '', email: '' });
   const { name, email } = users;

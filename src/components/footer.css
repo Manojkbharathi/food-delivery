@@ -81,6 +81,10 @@ input {
   gap: 1rem;
   margin: 0.5rem;
 }
+.navlink:hover {
+  color: red;
+  text-decoration: underline;
+}
 .aside {
   display: flex;
   width: 100vh;
