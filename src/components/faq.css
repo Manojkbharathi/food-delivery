@@ -1,0 +1,14 @@
+.faq {
+  margin: 2rem;
+  line-height: 2rem;
+}
+.faq p {
+  color: rgb(168, 162, 162);
+}
+.faq h2 {
+  text-align: center;
+  margin: 2rem;
+}
+.f {
+  margin: 5rem;
+}

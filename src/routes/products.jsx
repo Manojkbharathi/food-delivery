@@ -80,7 +80,7 @@ const Products = () => {
           })}
         </Slider>
       </div>
-      <div className='title'>
+      <div className='title' id='home'>
         <div className='menu-list-container'>
           <h2 className='slogan'>
             "Savor the Flavor, Order at <span className='clr'>Your Door.</span>"
@@ -146,7 +146,7 @@ const Products = () => {
           </div>
         </div>
       </div>
-      <div ref={contactRef} id='contact'>
+      <div id='contact'>
         <Footer />
       </div>
     </div>
