@@ -48,9 +48,10 @@ const Navbar = ({ updateSearchQuery }) => {
       <button className='log-btn' onClick={logout}>
         <FiLogOut />
       </button>
-      <a className='nav-link' href='#' onClick={scrollToContact}>
-        Contact
-      </a>
+      <Link to='/user' className='nav-link'>
+        {' '}
+        Profile
+      </Link>
     </div>
   );
 };
