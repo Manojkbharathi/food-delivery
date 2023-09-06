@@ -20,9 +20,7 @@ const SignUp = () => {
         console.error('Google Sign-In Error:', error);
       });
   };
-  useEffect(() => {
-    setValue(localStorage.getItem('email'));
-  }, []);
+
   const handleLogin = (e) => {
     e.preventDefault();
 

@@ -13,7 +13,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { advertiseItem } from '../components/data';
 import Footer from '../components/footer';
-
+import video from '../assets/video.mp4';
 const Products = () => {
   const navigate = useNavigate();
   const { addToCart } = useContext(ContextApp);
@@ -64,8 +64,13 @@ const Products = () => {
   return (
     <div className='wrapper'>
       <Navbar updateSearchQuery={setSearchQuery} />
+      <div className='video'>
+        <video autoPlay controls width='100%'>
+          <source src={video} type='video/mp4' />
+          Your browser does not support the video tag.
+        </video>
+      </div>
       <div>
-        {' '}
         <Slider {...settings}>
           {advertiseItem.map(({ id, img }) => {
             return (
@@ -80,6 +85,7 @@ const Products = () => {
           })}
         </Slider>
       </div>
+
       <div className='title' id='home'>
         <div className='menu-list-container'>
           <h2 className='slogan'>
