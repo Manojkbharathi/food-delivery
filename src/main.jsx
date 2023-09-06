@@ -10,6 +10,7 @@ import {
   Products,
   SignUp,
   Faq,
+  User,
 } from '../src/routes/index.js';
 import Root from './routes/root.jsx';
 import Cart from './routes/cart.jsx';
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: 'faq',
         element: <Faq />,
+      },
+      {
+        path: 'user',
+        element: <User />,
       },
     ],
   },
