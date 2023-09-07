@@ -26,11 +26,13 @@ const StoreProvider = ({ children }) => {
     fetchData();
   }, []);
   console.log('User data in state:', state.user);
-  const getUserProfile = () => {
-    const email = 'cc@gmail.com';
-    const filterUser = state.user.find((item) => item.email === email);
-    console.log(filterUser);
-  };
+  useEffect(() => {
+    onAuthStateChanged(auth, (userLogInData) => {
+      if (userLogInData) {
+        setUserEmailData(userLogInData.providerData[0]);
+      }
+    });
+  }, []);
   return (
     <UserContext.Provider value={{ ...state, userEmailData, setUserLogInData }}>
       {children}

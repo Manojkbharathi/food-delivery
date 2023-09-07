@@ -18,6 +18,7 @@ const SignIn = () => {
       email,
       password
     );
+    // get login data and set it tp use Store consumer
     setUserLogInData(userCredential);
     navigate('/products');
     location.reload();
