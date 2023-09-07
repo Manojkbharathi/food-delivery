@@ -15,6 +15,7 @@ import {
 import Root from './routes/root.jsx';
 import Cart from './routes/cart.jsx';
 import Context from './context/context.jsx';
+import { StoreProvider } from './context/storeProvider.jsx';
 const router = createBrowserRouter([
   {
     path: '/',
@@ -51,7 +52,9 @@ const router = createBrowserRouter([
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <Context>
-      <RouterProvider router={router} />
+      <StoreProvider>
+        <RouterProvider router={router} />
+      </StoreProvider>
     </Context>
   </React.StrictMode>
 );

@@ -27,7 +27,6 @@ const Navbar = ({ updateSearchQuery }) => {
       .then(() => {
         navigate('/');
 
-        localStorage.clear();
         window.location.reload();
       })
       .catch((err) => console.log('error'));

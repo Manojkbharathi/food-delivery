@@ -55,7 +55,7 @@ const SignUp = () => {
       setEmail('');
       setPassword('');
       setError(false);
-      navigate('/products');
+      navigate('/signIn');
     } catch (error) {
       console.log('Error Creating user:', error);
     }

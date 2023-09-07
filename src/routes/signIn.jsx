@@ -4,25 +4,23 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { auth } from '../utils/firebase';
 import '../routes/signUp';
 import main from '../assets/main.jpg';
-
+import { useStoreConsumer } from '../context/storeProvider';
 const SignIn = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
+  const { setUserLogInData } = useStoreConsumer();
   const onSignIn = async (e) => {
     e.preventDefault();
-    await signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.userCredential;
-        setEmail('');
-        setPassword('');
-        setError(false);
-        navigate('/products');
-      })
-      .catch((error) => {
-        setError(true);
-      });
+    const userCredential = await signInWithEmailAndPassword(
+      auth,
+      email,
+      password
+    );
+    setUserLogInData(userCredential);
+    navigate('/products');
+    location.reload();
   };
   return (
     <div className='sign-in-container'>
@@ -38,11 +36,13 @@ const SignIn = () => {
               type='email'
               placeholder='email'
               onChange={(e) => setEmail(e.target.value)}
+              required
             />
             <input
               type='password'
               placeholder='password'
               onChange={(e) => setPassword(e.target.value)}
+              required
             />
 
             <button type='submit' className='button'>
