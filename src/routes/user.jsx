@@ -4,8 +4,10 @@ import { signOut } from 'firebase/auth';
 import { auth, db, storage } from '../utils/firebase';
 import { useNavigate } from 'react-router';
 import { uploadBytes, ref, getDownloadURL } from 'firebase/storage';
-import { updateDoc, doc, getDoc, collection } from 'firebase/firestore';
+import { updateDoc, doc, getDoc, collection, setDoc } from 'firebase/firestore';
 import '../components/user.css';
+import logo from '../assets/logo.png';
+import { PacmanLoader } from 'react-spinners';
 import { useStoreConsumer } from '../context/storeProvider';
 const User = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -17,10 +19,13 @@ const User = () => {
   const [loading, setLoading] = useState(false);
   const { user, userEmailData } = useStoreConsumer();
   const navigate = useNavigate();
+
   const userData =
     user &&
     user.find((item) => item.email === userEmailData.email && userEmailData);
   const userId = userData.id;
+  console.log(userImage);
+
   const handleImageUpload = async (userId) => {
     try {
       if (userImage) {
@@ -28,6 +33,7 @@ const User = () => {
           console.error('Selected file is not an image.');
           return;
         }
+
         if (userImage.size > 5 * 1024 * 1024) {
           console.error(
             'Selected image is too large. Please select a smaller image.'
@@ -35,19 +41,18 @@ const User = () => {
           return;
         }
         const storageRef = ref(storage, `profileImages/${userId}`);
-        const uploadTask = uploadBytes(storageRef, userImage);
-        await uploadTask;
+        await uploadBytes(storageRef, userImage);
         const url = await getDownloadURL(storageRef);
-        setPhotoURL(url);
         console.log('Image URL:', url);
         return url;
       }
       return null;
     } catch (error) {
-      console.error(alert('Error uploading image:', error));
+      console.error('Error uploading image:', error);
+      return null;
     }
-    return null;
   };
+
   const handleSave = async () => {
     if (displayName && phoneNumber) {
       try {
@@ -56,19 +61,11 @@ const User = () => {
           ...userData,
           displayName: displayName,
           phoneNumber: phoneNumber,
-          // photoURL: photoURL,
         };
-        if (isEditingPhoto && setIsEditingPhoto) {
-          if (!userImage.type || !userImage.type.startsWith('image/')) {
-            console.error('Selected file is not an image.');
-            return null;
-          }
-          if (userImage.size > 5 * 1024 * 1024) {
-            console.error(alert('Selected image is too high quality'));
-            return null;
-          }
+        if (isEditingPhoto && userImage) {
           const photoURL = await handleImageUpload(userId); // Upload the image
-          console.log('Image URL:', photoURL);
+          console.log(photoURL);
+
           if (photoURL) {
             updatedData.photoURL = photoURL;
             console.log('Image URL:', photoURL);
@@ -76,8 +73,6 @@ const User = () => {
             console.error('Image upload failed.');
             return;
           }
-        } else {
-          updatedData.photoURL = null;
         }
 
         const itemToEdit = doc(db, 'users', userId);
@@ -87,11 +82,14 @@ const User = () => {
         window.location.reload('/products');
       } catch (error) {
         console.error('Error in updating:', error);
+      } finally {
+        setLoading(false);
       }
     } else {
       console.log('Name or phone number is empty');
     }
   };
+
   useEffect(() => {
     if (userData) {
       setDisplayName(userData.displayName || '');
@@ -111,30 +109,46 @@ const User = () => {
     setIsEditing(true);
     setDisplayName(userData.displayName);
     setPhoneNumber(userData.phoneNumber);
-    setUserImage(userData.photoURL);
+    setUserImage(userData.photoURL || userImage);
   };
+  console.log(userData.photoURL);
   const editPhoto = () => {
     setIsEditingPhoto(true);
+    setIsEditing(true);
   };
   return (
     <div>
-      <Navbar />
-      <h1>{displayName ? `Hello ${displayName}` : 'Please log in'}</h1>
+      <Navbar className='user-nav' />
+      <h1 className='name'>
+        Hello
+        <span className='user-name'>
+          {displayName ? ` ${displayName}` : 'Please log in'}
+        </span>
+      </h1>
       <div className='user-profile'>
         <div className='user-details'>
-          <img className='user-img' src={photoURL || userImage} alt='' />
-          <div className='user-data'>
+          <img
+            className='user-img'
+            src={userData.photoURL || userImage}
+            alt=''
+          />
+          <div className={`user-data ${loading ? 'blur' : ''}`}>
             <div className='img-section'>
               <input
+                className='img-input'
                 type='file'
                 accept='image/*'
                 onChange={(e) => setUserImage(e.target.files[0])}
+                disabled={!isEditingPhoto}
               />
-              <button className='button' Click={editPhoto}>
+              <button
+                className='button'
+                onClick={editPhoto}
+                disabled={!isEditing}
+              >
                 Edit Photo
               </button>
             </div>
-
             <div className='input-container'>
               <div className='input-section'>
                 <input
@@ -168,7 +182,7 @@ const User = () => {
               </div>
             </div>
           </div>
-          <div>
+          <div className='cart-button'>
             {!isEditing ? (
               <button className='button' onClick={handleEdit}>
                 Edit profile
@@ -178,16 +192,6 @@ const User = () => {
                 <button className='button' onClick={handleSave}>
                   Save Changes
                 </button>
-                {loading && (
-                  <div className='loader-container'>
-                    {/* <PacmanLoader
-                      color='#e62323'
-                      margin={-1}
-                      loading={loading}
-                      size={100}
-                    /> */}
-                  </div>
-                )}
               </>
             )}
             <button className='button' onClick={logOut}>
@@ -195,6 +199,16 @@ const User = () => {
             </button>
           </div>
         </div>
+        {loading && (
+          <div className='loader-container'>
+            <PacmanLoader
+              color='#e62323'
+              margin={-1}
+              loading={loading}
+              size={100}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

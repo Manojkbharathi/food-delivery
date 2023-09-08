@@ -11,6 +11,8 @@ const SignIn = () => {
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);
   const { setUserLogInData } = useStoreConsumer();
+  const [isOpen, setIsOpen] = useState(false);
+
   const onSignIn = async (e) => {
     e.preventDefault();
     const userCredential = await signInWithEmailAndPassword(
@@ -55,6 +57,21 @@ const SignIn = () => {
             {error && <span>Wrong email or password</span>}
           </form>
           {error && <span>Wrong email or password</span>}
+          <div className='credential-container'>
+            <button className='button' onClick={() => setIsOpen(!isOpen)}>
+              Test credential
+            </button>
+            {isOpen && (
+              <div className='credential'>
+                <p>
+                  <span>Email: </span>manojbharathi@gmail.com
+                </p>
+                <p>
+                  <span>Password: </span>123456
+                </p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
     </div>

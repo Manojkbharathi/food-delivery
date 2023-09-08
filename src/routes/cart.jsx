@@ -3,10 +3,24 @@ import { useContext, useEffect } from 'react';
 import { ContextApp } from '../context/context';
 import '../components/cart.css';
 import Navbar from '../components/navbar';
+import { useNavigate } from 'react-router';
+import Swal from 'sweetalert2';
 const Cart = () => {
   const { cartItem, addToCart, setCartItem } = useContext(ContextApp);
   const [totalAmount, setTotalAmount] = useState(0);
-
+  const navigate = useNavigate();
+  const emptyCart = () => {
+    setCartItem([]);
+    Swal.fire({
+      title: `Your order is successfully placed with $ ${totalAmount} `,
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown',
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp',
+      },
+    });
+  };
   useEffect(() => {
     let total = 0;
     cartItem.forEach((item) => {
@@ -63,6 +77,15 @@ const Cart = () => {
       )}
 
       <h2 className='price'>Total price :${totalAmount}</h2>
+      {cartItem.length > 0 ? (
+        <button className='buy-button' onClick={emptyCart}>
+          Buy now
+        </button>
+      ) : (
+        <button className='buy-button' onClick={() => navigate('/products')}>
+          Add item
+        </button>
+      )}
     </div>
   );
 };

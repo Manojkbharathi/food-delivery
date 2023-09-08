@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-
+import Swal from 'sweetalert2';
 import data from '../components/data.json';
 import { ContextApp } from '../context/context';
 import { auth } from '../utils/firebase';
@@ -17,6 +17,17 @@ import video from '../assets/video.mp4';
 const Products = () => {
   const navigate = useNavigate();
   const { addToCart } = useContext(ContextApp);
+  const handleAddToCart = (dish) => {
+    addToCart(dish);
+
+    Swal.fire({
+      position: 'top-end',
+      icon: 'success',
+      title: `${dish.name} Added to cart successfully`,
+      showConfirmButton: false,
+      timer: 1000,
+    });
+  };
 
   const [id, setId] = useState('');
   useEffect(() => {
@@ -64,8 +75,8 @@ const Products = () => {
   return (
     <div className='wrapper'>
       <Navbar updateSearchQuery={setSearchQuery} />
-      <div className='video'>
-        <video autoPlay controls width='100%'>
+      <div className='video-container'>
+        <video className='video' autoPlay controls width='100%'>
           <source src={video} type='video/mp4' />
           Your browser does not support the video tag.
         </video>
@@ -141,9 +152,9 @@ const Products = () => {
                       <p>Price: {dish.price}$</p>
                       <button
                         className='cart-btn'
-                        onClick={() => addToCart(dish)}
+                        onClick={() => handleAddToCart(dish)}
                       >
-                        <span>Click to get</span>
+                        <span>Add</span>
                       </button>
                     </div>
                   </div>
