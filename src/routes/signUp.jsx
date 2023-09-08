@@ -1,11 +1,16 @@
 import { auth, provider } from '../utils/firebase';
 import { collection, setDoc, doc } from 'firebase/firestore';
-import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
+import {
+  createUserWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from 'firebase/auth';
 import { useState, useEffect } from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { db } from '../utils/firebase';
 import '../../src/index.css';
 import { v4 as uuidv4 } from 'uuid';
+import { useStoreConsumer } from '../context/storeProvider';
 const SignUp = () => {
   const navigate = useNavigate();
   const [error, setError] = useState(false);
@@ -14,16 +19,24 @@ const SignUp = () => {
   const [userName, setUserName] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState('');
-  const handleCLick = () => {
-    signInWithPopup(auth, provider)
-      .then((data) => {
-        setValue(data.user.email);
-        localStorage.setItem('email', data.user.email);
-        navigate('/products');
-      })
-      .catch((error) => {
-        console.error('Google Sign-In Error:', error);
+  const sameId = uuidv4();
+  const { setUserLogInData } = useStoreConsumer();
+  const handleCLick = async () => {
+    const provider = new GoogleAuthProvider();
+    try {
+      const { user } = await signInWithPopup(auth, provider);
+      const userDoc = doc(db, 'users', sameId);
+      await setDoc(userDoc, {
+        id: sameId,
+        email: user.email,
+        displayName: user.displayName,
       });
+      setUserLogInData(user);
+      navigate('/products');
+    } catch (error) {
+      alert('Google Sign-In failed. Please try again.');
+      console.error('Error:', error);
+    }
   };
 
   const handleLogin = async (e) => {
@@ -35,7 +48,6 @@ const SignUp = () => {
         email,
         password
       );
-      const sameId = uuidv4();
       const user = userCredential.user;
       const logInDetails = {
         signUpMethod: 'emailAndPassword',
@@ -46,7 +58,7 @@ const SignUp = () => {
       await setDoc(
         userDoc,
         {
-          uid: sameId,
+          id: sameId,
           email: user.email,
           ...logInDetails,
         },

@@ -7,7 +7,7 @@ import { uploadBytes, ref, getDownloadURL } from 'firebase/storage';
 import { updateDoc, doc, getDoc, collection, setDoc } from 'firebase/firestore';
 import '../components/user.css';
 import logo from '../assets/logo.png';
-import { PacmanLoader } from 'react-spinners';
+import { FadeLoader } from 'react-spinners';
 import { useStoreConsumer } from '../context/storeProvider';
 const User = () => {
   const [isEditing, setIsEditing] = useState(false);
@@ -86,7 +86,7 @@ const User = () => {
         setLoading(false);
       }
     } else {
-      console.log('Name or phone number is empty');
+      alert('Phone Number is mandatory');
     }
   };
 
@@ -172,12 +172,13 @@ const User = () => {
               </div>
               <div className='input-section'>
                 <input
-                  type='text'
+                  type='number'
                   name='phoneNumber'
                   placeholder='Ph number'
                   value={phoneNumber}
                   onChange={(e) => setPhoneNumber(e.target.value)}
                   disabled={!isEditing}
+                  required
                 />
               </div>
             </div>
@@ -199,17 +200,17 @@ const User = () => {
             </button>
           </div>
         </div>
-        {loading && (
-          <div className='loader-container'>
-            <PacmanLoader
-              color='#e62323'
-              margin={-1}
-              loading={loading}
-              size={100}
-            />
-          </div>
-        )}
       </div>
+      {loading && (
+        <div className='loader-container'>
+          <FadeLoader
+            color='#e70c0c'
+            margin={-1}
+            loading={loading}
+            size={100}
+          />
+        </div>
+      )}
     </div>
   );
 };

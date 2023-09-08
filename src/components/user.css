@@ -95,3 +95,8 @@ input {
 .name {
   margin: 1rem;
 }
+.loader-container {
+  position: relative;
+  right: -50%;
+  top: -28rem;
+}
