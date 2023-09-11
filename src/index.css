@@ -1,6 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +10,7 @@ body {
   background-image: url(./assets/italian-crust-logo.png);
   background-repeat: no-repeat;
   background-position: center;
+  overflow-x: hidden;
 }
 
 form {

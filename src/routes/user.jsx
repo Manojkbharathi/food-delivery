@@ -24,7 +24,6 @@ const User = () => {
     user &&
     user.find((item) => item.email === userEmailData.email && userEmailData);
   const userId = userData.id;
-  console.log(userImage);
 
   const handleImageUpload = async (userId) => {
     try {
@@ -59,8 +58,8 @@ const User = () => {
         setLoading(true);
         let updatedData = {
           ...userData,
-          displayName: displayName,
-          phoneNumber: phoneNumber,
+          displayName,
+          phoneNumber,
         };
         if (isEditingPhoto && userImage) {
           const photoURL = await handleImageUpload(userId); // Upload the image
@@ -111,7 +110,6 @@ const User = () => {
     setPhoneNumber(userData.phoneNumber);
     setUserImage(userData.photoURL || userImage);
   };
-  console.log(userData.photoURL);
   const editPhoto = () => {
     setIsEditingPhoto(true);
     setIsEditing(true);

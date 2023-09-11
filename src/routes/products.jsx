@@ -15,6 +15,7 @@ import { advertiseItem } from '../components/data';
 import Footer from '../components/footer';
 import video from '../assets/video.mp4';
 const Products = () => {
+  window.scroll(0, 0);
   const navigate = useNavigate();
   const { addToCart } = useContext(ContextApp);
   const handleAddToCart = (dish) => {

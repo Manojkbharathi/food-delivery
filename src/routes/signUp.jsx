@@ -26,11 +26,17 @@ const SignUp = () => {
     try {
       const { user } = await signInWithPopup(auth, provider);
       const userDoc = doc(db, 'users', sameId);
-      await setDoc(userDoc, {
-        id: sameId,
-        email: user.email,
-        displayName: user.displayName,
-      });
+      if (userDoc.exists()) {
+        setUserLogInData(user);
+        navigate('/products');
+        window.location.reload('/products');
+      } else {
+        await setDoc(userDoc, {
+          id: sameId,
+          email: user.email,
+          displayName: user.displayName,
+        });
+      }
       setUserLogInData(user);
       navigate('/products');
     } catch (error) {

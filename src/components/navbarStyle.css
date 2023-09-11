@@ -4,7 +4,7 @@
 
 .navbar {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   padding: 1rem;
   gap: 5rem;
   align-items: center;
@@ -23,10 +23,29 @@
   right: -30px;
 }
 .logo {
-  width: 10%;
+  width: 8rem;
+  background-color: red;
   position: relative;
-  left: -19%;
+  left: -1rem;
   animation: rotation 8s infinite linear;
+}
+ul {
+  list-style: none;
+}
+.dropdown {
+  position: relative;
+  left: -2.5rem;
+}
+.dropdown-menu {
+  position: fixed;
+}
+.l {
+  position: relative;
+  left: -2rem;
+}
+.links-container {
+  display: flex;
+  gap: 1rem;
 }
 @keyframes rotation {
   from {
@@ -41,4 +60,47 @@
   font-size: 2rem;
   color: red;
   background-color: transparent;
+}
+
+@media screen and (max-width: 1268px) {
+  .navbar {
+    gap: 0rem 1rem;
+  }
+
+  .nav-link {
+    font-size: 1.5rem;
+  }
+
+  .count {
+    top: -30px;
+    right: -30px;
+  }
+
+  .log-btn {
+    font-size: 2rem;
+  }
+  .search {
+    display: flex;
+    padding: 1rem;
+  }
+}
+@media screen and (max-width: 855px) {
+  .logo {
+    width: 8rem;
+    background-color: red;
+    position: relative;
+    animation: rotation 8s infinite linear;
+  }
+}
+@media screen and (max-width: 855px) {
+  .search {
+    display: flex;
+    padding: 0.5rem;
+    position: relative;
+    left: -2rem;
+  }
+  .dropdown {
+    position: relative;
+    left: -1.5rem;
+  }
 }

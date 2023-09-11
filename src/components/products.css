@@ -1,7 +1,8 @@
 .menu-list {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 1rem;
+  gap: 2rem 3rem;
   justify-content: space-evenly;
   margin: 2rem;
   cursor: pointer;
@@ -124,4 +125,9 @@
   width: 100vh;
   position: relative;
   border-radius: 60%;
+}
+@media screen and (max-width: 1208px) {
+  .video {
+    width: 20rem;
+  }
 }

@@ -90,3 +90,16 @@ input {
   width: 100vh;
   justify-content: space-between;
 }
+@media screen and (max-width: 855px) {
+  .contact {
+    display: flex;
+    flex-direction: column;
+  }
+  .aside {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    align-items: center;
+    justify-content: center;
+  }
+}
