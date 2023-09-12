@@ -1,5 +1,5 @@
 import { auth, provider } from '../utils/firebase';
-import { collection, setDoc, doc } from 'firebase/firestore';
+import { collection, setDoc, doc, getDoc } from 'firebase/firestore';
 import {
   createUserWithEmailAndPassword,
   signInWithPopup,
@@ -25,14 +25,16 @@ const SignUp = () => {
     const provider = new GoogleAuthProvider();
     try {
       const { user } = await signInWithPopup(auth, provider);
-      const userDoc = doc(db, 'users', sameId);
-      if (userDoc.exists()) {
+
+      const userDoc = doc(db, 'users', user.uid);
+      const userDocSnapshot = await getDoc(userDoc);
+      if (userDocSnapshot.exists()) {
         setUserLogInData(user);
         navigate('/products');
         window.location.reload('/products');
       } else {
         await setDoc(userDoc, {
-          id: sameId,
+          id: user.uid,
           email: user.email,
           displayName: user.displayName,
         });
@@ -40,7 +42,6 @@ const SignUp = () => {
       setUserLogInData(user);
       navigate('/products');
     } catch (error) {
-      alert('Google Sign-In failed. Please try again.');
       console.error('Error:', error);
     }
   };

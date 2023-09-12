@@ -15,6 +15,7 @@ import Root from './routes/root.jsx';
 import Cart from './routes/cart.jsx';
 import Context from './context/context.jsx';
 import { StoreProvider } from './context/storeProvider.jsx';
+
 const router = createBrowserRouter([
   {
     path: '/',
