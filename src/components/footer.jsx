@@ -63,7 +63,6 @@ const Footer = () => {
             </div>
           </form>
           <div className='aside'>
-            {' '}
             <div className='contact-id'>
               <h2>Contact us</h2>
               <a className='navlink' href='/products'>
@@ -80,6 +79,19 @@ const Footer = () => {
                 <BsFillClockFill /> 8.00am - 9.00 pm
               </a>
             </div>
+
+            <div className='social-icons'>
+              <h2>Follow us</h2>
+              <a className='navlink' href='/products'>
+                <AiFillInstagram /> Instagram
+              </a>
+              <a className='navlink' href='/products'>
+                <AiOutlineFacebook /> Facebook
+              </a>
+              <a className='navlink' href='/products'>
+                <AiOutlineTwitter /> Twitter
+              </a>
+            </div>
             <div className='quick-link'>
               <h2>Quick links</h2>
               <div className='links'>
@@ -93,18 +105,6 @@ const Footer = () => {
                   Faq's
                 </Link>
               </div>
-            </div>
-            <div className='social-icons'>
-              <h2>Follow us</h2>
-              <a className='navlink' href='/products'>
-                <AiFillInstagram /> Instagram
-              </a>
-              <a className='navlink' href='/products'>
-                <AiOutlineFacebook /> Facebook
-              </a>
-              <a className='navlink' href='/products'>
-                <AiOutlineTwitter /> Twitter
-              </a>
             </div>
           </div>
         </div>

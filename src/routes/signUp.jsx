@@ -41,6 +41,7 @@ const SignUp = () => {
       }
       setUserLogInData(user);
       navigate('/products');
+      window.location.reload('/products');
     } catch (error) {
       console.error('Error:', error);
     }

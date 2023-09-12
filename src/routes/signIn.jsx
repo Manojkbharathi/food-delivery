@@ -31,9 +31,6 @@ const SignIn = () => {
 
       <div className='sing-in'>
         <div>
-          <img src={main} alt='' />
-        </div>
-        <div>
           <form onSubmit={onSignIn}>
             <input
               type='email'

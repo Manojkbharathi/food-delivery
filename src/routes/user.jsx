@@ -22,9 +22,11 @@ const User = () => {
 
   const userData =
     user &&
-    user.find((item) => item.email === userEmailData.email && userEmailData);
+    user.find(
+      (item) => item.email === userEmailData.email && userEmailData.email
+    );
   const userId = userData.id;
-
+  console.log(userId);
   const handleImageUpload = async (userId) => {
     try {
       if (userImage) {

@@ -5,7 +5,6 @@
   flex-direction: column;
   justify-content: space-between;
   margin: 8rem;
-  width: 90%;
 }
 .footer-container {
   display: flex;
@@ -42,9 +41,7 @@ input {
 .social-icons {
   display: flex;
   flex-direction: column;
-  align-items: start;
-  justify-content: center;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 .s-icons {
@@ -87,19 +84,28 @@ input {
 }
 .aside {
   display: flex;
-  width: 100vh;
+  align-items: center;
+  gap: 2rem 3rem;
+  flex-wrap: wrap;
+  width: 100vw;
   justify-content: space-between;
 }
-@media screen and (max-width: 855px) {
+@media screen and (max-width: 555px) {
   .contact {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
   .aside {
     display: flex;
-    flex-direction: column;
-    margin: 1rem;
     align-items: center;
-    justify-content: center;
+    margin-left: 1rem;
+  }
+  input {
+    padding: 0.85rem 1rem;
+    padding-left: 5px;
+    border: 3px solid rgb(18, 188, 207);
+    border-radius: 15px;
   }
 }

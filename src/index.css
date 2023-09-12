@@ -79,10 +79,22 @@ form {
   gap: 8rem;
 }
 .sign-in-container {
+  width: 100vw;
+  height: 100vh;
+  background-image: url(./assets/main.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center 4rem;
+
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+.sign-in-container h2 {
+  color: #aca40c;
+  position: relative;
+  top: -8rem;
 }
 .credential p {
   margin-top: 2rem;
@@ -91,4 +103,12 @@ form {
 }
 .credential-container {
   margin: 2rem;
+}
+
+@media screen and (max-width: 855px) {
+  .sign-in-container h2 {
+    color: #aca40c;
+    position: relative;
+    top: -1rem;
+  }
 }

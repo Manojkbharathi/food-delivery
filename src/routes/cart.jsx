@@ -20,6 +20,7 @@ const Cart = () => {
         popup: 'animate__animated animate__fadeOutUp',
       },
     });
+    navigate('/products');
   };
   useEffect(() => {
     let total = 0;

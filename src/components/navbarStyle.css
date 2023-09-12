@@ -96,11 +96,27 @@ ul {
   .search {
     display: flex;
     padding: 0.5rem;
+    height: 1.5rem;
+    width: 8rem;
     position: relative;
-    left: -2rem;
+    left: -1rem;
   }
   .dropdown {
     position: relative;
     left: -1.5rem;
+  }
+  .logo {
+    width: 3rem;
+    position: relative;
+    top: -1.5rem;
+  }
+}
+
+@media screen and (max-width: 585px) {
+  .dropdown {
+    padding-bottom: 5rem;
+  }
+  .navbar {
+    margin: 1rem;
   }
 }
