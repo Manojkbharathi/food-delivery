@@ -76,14 +76,14 @@ const Navbar = ({ updateSearchQuery }) => {
               </li>
 
               <li>
-                <button className='log-btn' onClick={logout}>
-                  <FiLogOut />
-                </button>
-              </li>
-              <li>
                 <Link to='/user' className='nav-link'>
                   Profile
                 </Link>
+              </li>
+              <li>
+                <button className='nav-link' onClick={logout}>
+                  Log out
+                </button>
               </li>
             </ul>
           )}

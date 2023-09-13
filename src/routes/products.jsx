@@ -164,7 +164,7 @@ const Products = () => {
           </div>
         </div>
       </div>
-      <div id='contact'>
+      <div id='contact' className=' footer-box'>
         <Footer />
       </div>
     </div>
