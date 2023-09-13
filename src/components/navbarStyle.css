@@ -128,4 +128,31 @@ li button {
   .navbar {
     margin: 1rem;
   }
+  .logo {
+    width: 3rem;
+    position: relative;
+    left: -1rem;
+    top: -3rem;
+  }
+  .search {
+    display: flex;
+    padding: 0.5rem;
+    height: 1.5rem;
+    width: 8rem;
+    position: relative;
+    left: -10px;
+  }
+  .dropdown-toggle {
+    position: relative;
+    right: -2rem;
+  }
+  .l {
+    position: relative;
+    top: -1rem;
+    left: 10px;
+  }
+  .count {
+    position: relative;
+    top: 1px;
+  }
 }
