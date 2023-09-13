@@ -30,7 +30,7 @@
   margin: 1rem;
   position: relative;
   left: 13%;
-  top: -5rem;
+  top: -8rem;
   gap: 1rem;
 }
 .blur {
@@ -62,6 +62,8 @@
 }
 .img-input {
   padding: 1rem 2.4rem;
+  position: relative;
+  top: 8rem;
 }
 input {
   display: flex;
@@ -108,9 +110,15 @@ input {
     align-items: center;
     margin: 1rem;
     position: relative;
+    top: -2rem;
     left: 13%;
     gap: 1rem;
 
     width: 17rem;
+  }
+  .img-input {
+    padding: 1rem 2.4rem;
+    position: relative;
+    top: 2rem;
   }
 }
