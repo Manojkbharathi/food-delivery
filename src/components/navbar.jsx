@@ -58,7 +58,7 @@ const Navbar = ({ updateSearchQuery }) => {
           placeholder='Search...'
           onChange={handleSearch}
         />
-        <div>
+        <div className='nav-cart'>
           <Link to='/cart' className='nav-link l'>
             <span className='count'>{cartCount}</span> <MdFastfood />
           </Link>
