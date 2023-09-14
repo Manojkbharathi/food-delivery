@@ -55,9 +55,9 @@ form {
 }
 
 .button:hover {
-  border: 3px solid #2ecc71;
-  background: transparent;
-  color: #2ecc71;
+  border: 3px solid #0960d1;
+  background: yellow;
+  color: #ff0000;
 }
 .heading {
   margin: 1rem;
@@ -96,11 +96,18 @@ form {
   position: relative;
   top: -8rem;
 }
-.credential p {
-  margin-top: 2rem;
-  font-size: 1rem;
-  margin-left: 3rem;
+.credential {
+  background-color: rgb(199, 233, 6);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1rem;
+  border-radius: 15px;
 }
+
 .credential-container {
   margin: 2rem;
 }
