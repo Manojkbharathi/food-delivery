@@ -30,8 +30,7 @@
   margin: 1rem;
   position: relative;
   left: 13%;
-  top: -8rem;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 .blur {
   filter: blur(4px);
@@ -103,7 +102,10 @@ input {
   right: -50%;
   top: -28rem;
 }
-
+.img-input {
+  padding: 1rem 2.4rem;
+  top: 0rem;
+}
 @media screen and (max-width: 555px) {
   .img-section {
     display: flex;

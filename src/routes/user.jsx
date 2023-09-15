@@ -133,22 +133,6 @@ const User = () => {
             alt=''
           />
           <div className={`user-data ${loading ? 'blur' : ''}`}>
-            <div className='img-section'>
-              <input
-                className='img-input'
-                type='file'
-                accept='image/*'
-                onChange={(e) => setUserImage(e.target.files[0])}
-                disabled={!isEditingPhoto}
-              />
-              <button
-                className='button'
-                onClick={editPhoto}
-                disabled={!isEditing}
-              >
-                Edit Photo
-              </button>
-            </div>
             <div className='input-container'>
               <div className='input-section'>
                 <input
@@ -180,6 +164,28 @@ const User = () => {
                   disabled={!isEditing}
                   required
                 />
+              </div>
+              <div className='img-section'>
+                <div>
+                  {' '}
+                  <input
+                    className='img-input'
+                    type='file'
+                    accept='image/*'
+                    onChange={(e) => setUserImage(e.target.files[0])}
+                    disabled={!isEditingPhoto}
+                  />
+                </div>
+                <div>
+                  {' '}
+                  <button
+                    className='button'
+                    onClick={editPhoto}
+                    disabled={!isEditing}
+                  >
+                    Edit Photo
+                  </button>
+                </div>
               </div>
             </div>
           </div>
