@@ -37,7 +37,7 @@ const Products = () => {
         const uid = user.uid;
         setId(uid);
       } else {
-        navigate('/signIn');
+        navigate('/');
       }
     });
   }, [navigate]);

@@ -117,7 +117,7 @@ const SignUp = () => {
           SignIn with Google
         </button>
 
-        <button className='btn' onClick={() => navigate('/signIn')}>
+        <button className='btn' onClick={() => navigate('/')}>
           Already have Account Log in
         </button>
       </div>

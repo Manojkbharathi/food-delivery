@@ -48,7 +48,7 @@ const SignIn = () => {
             <button type='submit' className='button'>
               Log In
             </button>
-            <button className='button' onClick={() => navigate('/')}>
+            <button className='button' onClick={() => navigate('/signUp')}>
               Add New account
             </button>
             {error && <span>Wrong email or password</span>}
