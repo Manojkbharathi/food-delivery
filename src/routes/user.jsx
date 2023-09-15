@@ -177,7 +177,6 @@ const User = () => {
                   />
                 </div>
                 <div>
-                  {' '}
                   <button
                     className='button'
                     onClick={editPhoto}
